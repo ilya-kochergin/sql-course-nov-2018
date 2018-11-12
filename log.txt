@@ -1,0 +1,338 @@
+
+  MEMBERID FIRSTNAME  LASTNAME   TAXID         SALARY      BONUS G M HIREDATE FIREDATE                      MENTORID     TEAMID
+---------- ---------- ---------- --------- ---------- ---------- - - -------- --------------------------- ---------- ----------
+       500 John       Jones      000000000      75000       5000 M Y 01.02.90                                               400
+       501 Mary       Jones      111111111      30000            F N 02.03.02                                    506        401
+       502 Antonios   Vamvakeros 222222222      30000            M N 15.03.02                                    506        401
+       503 Louisa     Lindboe    333333333      30000       1000 F Y 01.01.02                                    506        401
+       504 Cara       Montopoli  444444444      35000       2000 F Y 01.01.01                                    506        401
+       505 Michael    Dupre      555555555      50000       4000 M Y 12.12.97                                    500        402
+       506 Migumi     Zona       666666666      75000       5000 F N 01.03.90                                    500        400
+       507 Wey        Ho         777777777      30000            M N 01.02.90                                    505        402
+       508 Joseph     Smith      888888888          0          0 M N 01.02.90 15.06.02                                         
+
+9 rows selected. 
+
+SQL> spool c:\sql1\log.txt append
+SQL> set spool off
+SQL> spool c:\sql1\log.txt append
+SQL> select 
+  2     * 
+  3  from 
+  4    members
+
+  MEMBERID FIRSTNAME  LASTNAME   TAXID         SALARY      BONUS G M HIREDATE FIREDATE                      MENTORID     TEAMID
+---------- ---------- ---------- --------- ---------- ---------- - - -------- --------------------------- ---------- ----------
+       500 John       Jones      000000000      75000       5000 M Y 01.02.90                                               400
+       501 Mary       Jones      111111111      30000            F N 02.03.02                                    506        401
+       502 Antonios   Vamvakeros 222222222      30000            M N 15.03.02                                    506        401
+       503 Louisa     Lindboe    333333333      30000       1000 F Y 01.01.02                                    506        401
+       504 Cara       Montopoli  444444444      35000       2000 F Y 01.01.01                                    506        401
+       505 Michael    Dupre      555555555      50000       4000 M Y 12.12.97                                    500        402
+       506 Migumi     Zona       666666666      75000       5000 F N 01.03.90                                    500        400
+       507 Wey        Ho         777777777      30000            M N 01.02.90                                    505        402
+       508 Joseph     Smith      888888888          0          0 M N 01.02.90 15.06.02                                         
+
+9 rows selected. 
+
+SQL> spool c:\sql1\log.txt append
+SQL> select 
+  2     * 
+  3  from 
+  4    members
+
+  MEMBERID FIRSTNAME  LASTNAME   TAXID         SALARY      BONUS G M HIREDATE FIREDATE                      MENTORID     TEAMID
+---------- ---------- ---------- --------- ---------- ---------- - - -------- --------------------------- ---------- ----------
+       500 John       Jones      000000000      75000       5000 M Y 01.02.90                                               400
+       501 Mary       Jones      111111111      30000            F N 02.03.02                                    506        401
+       502 Antonios   Vamvakeros 222222222      30000            M N 15.03.02                                    506        401
+       503 Louisa     Lindboe    333333333      30000       1000 F Y 01.01.02                                    506        401
+       504 Cara       Montopoli  444444444      35000       2000 F Y 01.01.01                                    506        401
+       505 Michael    Dupre      555555555      50000       4000 M Y 12.12.97                                    500        402
+       506 Migumi     Zona       666666666      75000       5000 F N 01.03.90                                    500        400
+       507 Wey        Ho         777777777      30000            M N 01.02.90                                    505        402
+       508 Joseph     Smith      888888888          0          0 M N 01.02.90 15.06.02                                         
+
+9 rows selected. 
+
+SQL> cd \sql1
+SQL> cd \sql1\setup
+SQL> @electronicsSelect
+SQL> /* 
+SQL>Copyright (c) 2005 Sideris Courseware Corporation. All Rights Reserved.
+SQL>This file is licensed for use only by those instructors and students
+SQL>who have received a valid license for the Sideris courseware title
+SQL>associated with this file. All other use, duplication or distribution
+SQL>is prohibited and illegal.
+SQL>*/
+SQL> 
+SQL> /*
+SQL>Formatting commands which enhance the readability of the output.
+SQL>*/
+SQL> 
+SQL> COLUMN Address FORMAT A20 WORD_WRAP;
+SQL> COLUMN Comments FORMAT A10 WORD_WRAP;
+SQL> COLUMN QtyOnHand FORMAT 9999 HEADING 'Qty|On|Hand';
+SQL> COLUMN QtyInProcess FORMAT 9999 HEADING 'Qty|In|Process';
+SQL> COLUMN MemberID FORMAT B99999 HEADING 'Member|ID';
+SQL> COLUMN MentorID FORMAT B99999 HEADING 'Mentor|ID';
+SQL> COLUMN ProductID FORMAT B999999 HEADING 'Product|ID';
+SQL> COLUMN CustomerID FORMAT B9999999 HEADING 'Customer|ID';
+SQL> COLUMN TeamID FORMAT B999 HEADING 'Team|ID';
+SQL> 
+SQL> SET FEEDBACK 4;
+SQL> SET ECHO ON;
+SQL> 
+SQL> SELECT * FROM customers;
+
+   Customer                                                                     
+         ID NAME                 ADDRESS              TELEPHONE  TYPE           
+----------- -------------------- -------------------- ---------- ---------------
+        100 The Camera Store     300 Broad St., New   2125552222 Retail         
+                                 York, NY                                       
+
+        101 Wilson Security      50 Cactus Freeway,   6095550000 End User       
+                                 Phoenix, AZ                                    
+
+        102 City Copy Shop       777 5th Ave, New     2125551111 End User       
+                                 York, NY                                       
+
+        103 Computer Planet      100 Boylston St.,    6175553333 Retail         
+
+   Customer                                                                     
+         ID NAME                 ADDRESS              TELEPHONE  TYPE           
+----------- -------------------- -------------------- ---------- ---------------
+                                 Boston, MA                                     
+
+        104 Hi Tech Supply       50 Market Blvd,      5103334444 Distributor    
+                                 Oakland, CA                                    
+
+
+5 rows selected. 
+
+SQL> SELECT * FROM products;
+
+                                                              Qty            Qty                     
+   Product                                                     On             In               Member
+        ID NAME                 COMMENTS    LISTPRICE        Hand        Process LOCATION          ID
+---------- -------------------- ---------- ---------- ----------- -------------- ---------- ---------
+       300 Digital camera       3.7M           699,99         745            100 Boston           504
+                                pixels                                                               
+
+       301 Scanner              Black and        1100          50             10 Chicago          501
+                                White                                                                
+
+       302 Hi Res Scanner       Color            1500          50             10 Chicago          502
+       303 Photocopier                           2900          25              0 Chicago          503
+       304 Video recorder       Stereo          999,5         500            100 Boston           505
+
+                                                              Qty            Qty                     
+   Product                                                     On             In               Member
+        ID NAME                 COMMENTS    LISTPRICE        Hand        Process LOCATION          ID
+---------- -------------------- ---------- ---------- ----------- -------------- ---------- ---------
+                                equipped                                                             
+
+       305 Badge reader         Bar code       349,99         422            100 Miami            507
+                                device                                                               
+
+
+6 rows selected. 
+
+SQL> SELECT * FROM sales;
+
+   Customer    Product                               
+         ID         ID SALEDATE        QTY  UNITPRICE
+----------- ---------- -------- ---------- ----------
+        100        300 01.12.01         10        300
+        104        300 12.01.01          5        600
+        100        300 01.11.01          5        350
+        104        301 12.01.01          5       1000
+        100        304 01.12.01         10        500
+        101        305 03.03.00          2     349,99
+        104        302 01.12.01          5       1000
+        100        304 01.01.01          7        650
+        103        301 08.04.01          1       1000
+        103        301 07.04.01          5        900
+
+   Customer    Product                               
+         ID         ID SALEDATE        QTY  UNITPRICE
+----------- ---------- -------- ---------- ----------
+        103        302 07.04.01          5       1200
+        104        304 11.10.01         10      550,5
+        103        301 15.06.01          5        900
+        103        302 15.06.01          5       1200
+        104        304 18.02.01          3        750
+        104        303 11.04.01          5       2000
+        102        303 12.06.00          2       2850
+        103        303 29.11.01          1       2900
+        102        303 01.01.01          1       2900
+        102        303 07.11.01          1       2900
+
+20 rows selected. 
+
+SQL> SELECT * FROM teams;
+
+   Team                                    
+     ID NAME            STARTDAT   LEADERID
+------- --------------- -------- ----------
+    400 Management      01.01.00        500
+    401 Production      01.01.00        506
+    402 Engineering     01.01.01        505
+    403 Advertising     10.06.02        500
+
+4 rows selected. 
+
+SQL> SELECT * FROM members;
+
+    ember                                                         M                                         Mentor    Team
+   M   ID FIRSTNAME  LASTNAME   TAXID         SALARY      BONUS G   HIREDATE FIREDATE                           ID      ID
+--------- ---------- ---------- --------- ---------- ---------- - - -------- --------------------------- --------- -------
+      500 John       Jones      000000000      75000       5000 M Y 01.02.90                                           400
+      501 Mary       Jones      111111111      30000            F N 02.03.02                                   506     401
+      502 Antonios   Vamvakeros 222222222      30000            M N 15.03.02                                   506     401
+      503 Louisa     Lindboe    333333333      30000       1000 F Y 01.01.02                                   506     401
+      504 Cara       Montopoli  444444444      35000       2000 F Y 01.01.01                                   506     401
+      505 Michael    Dupre      555555555      50000       4000 M Y 12.12.97                                   500     402
+      506 Migumi     Zona       666666666      75000       5000 F N 01.03.90                                   500     400
+      507 Wey        Ho         777777777      30000            M N 01.02.90                                   505     402
+      508 Joseph     Smith      888888888          0          0 M N 01.02.90 15.06.02                                     
+
+9 rows selected. 
+
+SQL> 
+SQL> SET ECHO OFF;
+For help on a topic type help <topic> 
+List of Help topics available:
+/                @                @@               ACCEPT           ALIAS            APEX             APPEND           ARCHIVE_LOG      
+BRIDGE           BTITLE           CD               CHANGE           CLEAR            COLUMN           COMPUTE          CONNECT          
+CTAS             DDL              DEFINE           DEL              DESCRIBE         DISCONNECT       EDIT             EXECUTE          
+FIND             FORMAT           GET              HISTORY          HOST             INFORMATION      INPUT            LIST             
+NET              OERR             PASSWORD         PAUSE            PRINT            PROMPT           QUIT             REMARK           
+RESERVED_WORDS   REST             RUN              SAVE             SCRIPT           SET              SETERRORL        SHOW             
+SODA             SPOOL            SSHTUNNEL        START            STARTUP          STORE            TIMING           TNSPING          
+UNDEFINE         VARIABLE         WHENEVER         WHICH            XQUERY           
+ALIAS
+------
+
+alias [<name>=<SQL statement>;| LOAD [<filename>]|SAVE [<filename>] | LIST [<NAME>] | 
+                               DROP <name> | DESC <name> <Description String>]
+
+Alias is a command which allows you to save a sql, plsql or sqlplus script and assign it a shortcut command.
+	"alias" - print a list of aliases
+	"alias list <aliasName>" - list the contents of the alias
+	"alias <aliasName>=select :one from dual;" - Simple alias command
+	Define an alias simply by using the alias keyword followed by a single identifier
+	name followed by an '='. Anything after the '=' will be used as the alias contents.
+	For example, if it is SQL, it will be terminated by a ';'. If it is PLSQL, it will
+	be terminated by a '/'
+
+Examples:
+--------
+1. SQL Example with Binds
+
+	SQL> alias fred=select :one from dual;
+	In this example, a bind variable can be set up in the alias.
+	Running the alias is done like this below with any parameters
+	to the alias being bound to a bind variable by SQLcl
+
+	SQL> fred 1
+	Command=fred
+	:ONE
+	----
+	>
+
+2. PL/SQL example
+	SQL> alias db= begin dbms_output.put_line('hi'); end;
+	>  /
+	Here the block of PLSQL is terminated by the '/' on a separate 
+	line at which point it is accepted as a new alias.
+
+	SQL> db
+	Command=db
+	PL/SQL procedure successfully completed.
+	hi
+
+Summary
+-------
+	alias ..=.. is terminated by ';'
+	alias ..=begin or ..=declare is terminated by a / on a newline
+	alias on its own gives a list of existing aliases.
+locks    - locks <USERNAME>
+sessions
+tables   - tables <schema> - show tables from schema
+tables2  - tables <schema> - show tables from schema
+For help on a topic type help <topic> 
+List of Help topics available:
+/                @                @@               ACCEPT           ALIAS            APEX             APPEND           ARCHIVE_LOG      
+BRIDGE           BTITLE           CD               CHANGE           CLEAR            COLUMN           COMPUTE          CONNECT          
+CTAS             DDL              DEFINE           DEL              DESCRIBE         DISCONNECT       EDIT             EXECUTE          
+FIND             FORMAT           GET              HISTORY          HOST             INFORMATION      INPUT            LIST             
+NET              OERR             PASSWORD         PAUSE            PRINT            PROMPT           QUIT             REMARK           
+RESERVED_WORDS   REST             RUN              SAVE             SCRIPT           SET              SETERRORL        SHOW             
+SODA             SPOOL            SSHTUNNEL        START            STARTUP          STORE            TIMING           TNSPING          
+UNDEFINE         VARIABLE         WHENEVER         WHICH            XQUERY           
+APPEND
+------
+
+Adds text to the end of the current line in the SQL buffer.
+
+A[PPEND] text
+EDIT
+ ---------
+
+ Invokes an operation system text editor on the contents of the 
+specified file or on the contents of the SQL buffer. 
+
+ ED[IT] [file_name[.ext]]
+
+The DEFINE variable _EDITOR can be used to set the editor to use
+
+In SQLcl, _EDITOR can be set to "inline". This will set the editor to
+be the SQLcl editor.  This supports the following shortcuts
+	^R - Run the current buffer
+	^W - Go to top of buffer
+	^S - Go to bottom of buffer
+	^A - Go to start of line
+	^E - Go to end of line
+BRIDGE
+----
+
+Used mainly to script data move between two connections/schemas 
+It also includes functionality to dynamically create Oracle tables which "fit" the data being received through JDBC
+The following functionality is available
+A) query tables in other connections 
+B) query tables in multiple connections in the same statement
+C) insert data from one connection into another
+D) create a table and insert data into it from another connection
+
+Syntax:
+BRIDGE <targetTableName> as "<jdbcURL>"(<sqlQuery>);
+
+Example:
+BRIDGE table1 as "jdbc:oracle:thin:scott/tiger@localhost:1521:orcl"(select * from dept);
+In the above example table1 is created in the current connection. 
+Table1 is defined using the metadata from the query run against the database connection defined using a SID.
+
+Example:
+BRIDGE table1 as "jdbc:oracle:thin:scott/tiger@localhost:1521/orcl"(select * from dept);
+In the above example table1 is created in the current connection. 
+Table1 is defined using the metadata from the query run against the database connection defined using a Service Name.
+
+The JDBC URL specified has to conform to the format defined by the driver.
+
+BRIDGE new_table   as "jdbc:oracle:thin:[USER/PASSWORD]@[HOST][:PORT]:SID"(select * from scott.emp);
+BRIDGE new_table   as "jdbc:oracle:thin:[USER/PASSWORD]@[HOST][:PORT]/SERVICE"(select * from scott.dept);
+For help on a topic type help <topic> 
+List of Help topics available:
+/                @                @@               ACCEPT           ALIAS            APEX             APPEND           ARCHIVE_LOG      
+BRIDGE           BTITLE           CD               CHANGE           CLEAR            COLUMN           COMPUTE          CONNECT          
+CTAS             DDL              DEFINE           DEL              DESCRIBE         DISCONNECT       EDIT             EXECUTE          
+FIND             FORMAT           GET              HISTORY          HOST             INFORMATION      INPUT            LIST             
+NET              OERR             PASSWORD         PAUSE            PRINT            PROMPT           QUIT             REMARK           
+RESERVED_WORDS   REST             RUN              SAVE             SCRIPT           SET              SETERRORL        SHOW             
+SODA             SPOOL            SSHTUNNEL        START            STARTUP          STORE            TIMING           TNSPING          
+UNDEFINE         VARIABLE         WHENEVER         WHICH            XQUERY           
+BTITLE
+------
+
+ Places and formats a specified title at the bottom of each r
